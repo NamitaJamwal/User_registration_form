@@ -1,5 +1,7 @@
 <?php
 require_once ('connect.php');
+
+$ID = $_GET['ID'];
 ?>
 
 <html>
@@ -16,19 +18,22 @@ require_once ('connect.php');
     <![endif]-->
   </head>
     <body>
-      <table width="1200" border="1" cellpadding="1" cellspacing="5">
+      <table width="1235" border="2" cellpadding="1" cellspacing="1">
         <tr>
           <th><center>ID</center></th>
           <th><center>First Name</center></th>
           <th><center>Last Name</center></th>
+          <th><center>Eamil</center></th>
           <th><center>Gender</center></th>
           <th><center>Date of Birth</center></th>
+          <th><center>Country</center></th>
+          <th><center>Website</center></th>
+          <th><center>Bio </center></th>
           <th><center>Registration Date</center></th>
-          <th><center>Action</center></th>
         </tr>
 
 <?php
-$select = "SELECT * FROM `user` ";
+$select = "SELECT * FROM `user` WHERE `ID`=$ID";
 $record = mysqli_query($connection,$select);
 while($data = mysqli_fetch_array($record))
 {
@@ -37,28 +42,17 @@ while($data = mysqli_fetch_array($record))
     <td><center><?php echo $data['ID']; ?></center></center></td>
     <td><center><?php echo $data['First Name']; ?></center></td>
     <td><center><?php echo $data['Last Name']; ?></center></td>
+    <td><center><?php echo $data['Email']; ?></center></td>
     <td><center><?php echo $data['Gender']; ?></center></td>
     <td><center><?php echo $data['Date of Birth']; ?></center></td>
+    <td><center><?php echo $data['Country']; ?></center></td>
+    <td><center><?php echo $data['Website']; ?></center></td>
+    <td><center><?php echo $data['Bio']; ?></center></td>
     <td><center><?php echo $data['Created Date']; ?></center></td>
-    <td><center><a href="record.php?ID=<?php echo $data['ID']; ?>">View</a>
-        <a href="edit.php?ID=<?php echo $data['ID']; ?>"><span class="glyphicon glyphicon-edit" aria-hidden="true">Edit</span></a>
-        <a href="delete.php?ID=<?php echo $data['ID']; ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true">Delete</span></a></center></td>
   <tr>
 <?php
 }
 ?>
   </table>
-  <br>
-  <div class="row">
-    <div class="col-md-12">
-      <center><a href="index.php"><input type="submit" name="done" class="btn btn-success btn-send" value="Add User"></a></center>
-    </div>
-  </div>
-
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>

@@ -9,6 +9,7 @@ $del= mysqli_query($connection,$DeleteSql);
 if($del)
  {
     echo 'Data Deleted successfully';
+    header ("refresh:1; url=data.php");
   }
 else
   {
