@@ -325,13 +325,13 @@ $check = mysqli_fetch_array($m);
 
 
     <label class="control-label" >Gender:</label>
-    <div class="row" value="<?php echo $check['Gender'];?>">
+    <div class="row">
       <div class="col-md-6" >
         <label class="radio-inline"  >
-          <input type="radio" name="gender" value="Male" id="optradio" checked>Male
+          <input type="radio" name="gender" value="Male" id="optradio" <?php if($check['Gender']=='Male') {?>checked<?php } ?>>Male
         </label>
         <label class="radio-inline">
-          <input type="radio" name="gender" value="Female" id="optradio">Female
+          <input type="radio" name="gender" value="Female" id="optradio" <?php if($check['Gender']=='Female') {?>checked<?php } ?>>Female
         </label>
       </div>
     </div><br>
@@ -344,7 +344,7 @@ $check = mysqli_fetch_array($m);
             <?php
             foreach($country as $key => $value) {
               ?>
-              <option value="<?= $key ?>" title="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($value) ?></option>
+              <option value="<?= $key ?>" title="<?= htmlspecialchars($value) ?>" <?php if ($check['Country'] == $key) echo 'selected' ; ?>><?= htmlspecialchars($value) ?></option>
               <?php
             }
             ?>
